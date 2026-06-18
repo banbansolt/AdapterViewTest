@@ -1,4 +1,5 @@
 package kr.ac.kopo.sang.adapterviewtest;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,8 +18,8 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+//    String[] items = {"들만나면", "군제", "용과 사는 남자", "장교육", "허수아비", "멋진신세계"};
 
-    //String[] items = {"틈만나면", "군체", "왕과 사는 남자", "참교육", "허수아비", "멋진신세계"};
     ArrayList<String> itemList = new ArrayList<String>();
     EditText edit1;
 
@@ -32,10 +33,11 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         edit1 = findViewById(R.id.edit1);
         Button btnAdd = findViewById(R.id.btn_add);
 
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, itemList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, itemList);
         ListView list1 = findViewById(R.id.list1);
 
         list1.setAdapter(adapter);
@@ -43,10 +45,11 @@ public class MainActivity extends AppCompatActivity {
         list1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), itemList.get(position) + "이 선택됨", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), itemList.get(position)+"이 선택됨", Toast.LENGTH_LONG).show();
             }
         });
-        //항목 추가
+
+        // 항목추가
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //항목 제거
+// 항목삭제
         list1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
